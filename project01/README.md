@@ -1,5 +1,5 @@
 # Introduction
-In this project, we are parsing a Variant Call Format (VCF) file to identify and count rare diseases associated with a rare genetic variants, based on their ExAC alelle frequency. 
+In this project, we are parsing a Variant Call Format (VCF) file to identify and count rare diseases associated with rare genetic variants, based on their ExAC allele frequency. 
 
 # Pseudocode
 
@@ -108,17 +108,22 @@ if __name__ == "__main__":
 ```
 
 # Successes
-Description of the team's learning points
+- This was one of my first times live coding with other people, so getting comfortable talking through the code together was a learning curve at first. It was helpful to work through things I did not know with the group instead of immediately jumping to Google or an LLM. Talking through the logic together made the process feel more collaborative and helped me understand the reasoning behind our choices.
+- Having some previous experience with VCF parsing also helped me recognize parts of the file structure and contribute to the discussion more confidently.
 
 # Struggles
-Description of the stumbling blocks the team experienced
+- GitHub took the longest to figure out. Cloning, forking, switching branches, pushing changes, and creating pull requests were all new, so we spent a lot of time making sure we were doing each step correctly.
+- We are still getting used to reviewing pull requests separately. It would be easier and faster if we could compare all three or more submissions at the same time instead of checking each one individually.
+- Since the workflow is still new to us, we were also careful about not accidentally changing the wrong file or working in the wrong branch.
+- A lot of the challenge was less about the Python itself and more about making sure everyone’s work was being combined correctly.
 
 # Personal Reflections
 ## Group Leader
 Group leader's reflection on the project
 
 ## Other member
-Other members' reflections on the project
+## Aamna: 
+The biggest learning point for me was understanding the GitHub workflow and how forks, branches, commits, and pull requests all connect. It took some trial and error to make sure I was working in the correct branch and not overwriting anyone else’s work. I also found that reviewing multiple pull requests separately can be a little slow, especially when several people have made changes to the same file. I feel a lot more comfortable with the process now and understand much better how group coding projects are managed through GitHub.
 
 # Generative AI Appendix
 As per the syllabus
