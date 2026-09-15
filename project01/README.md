@@ -110,6 +110,7 @@ if __name__ == "__main__":
 # Successes
 - This was one of my first times live coding with other people, so getting comfortable talking through the code together was a learning curve at first. It was helpful to work through things I did not know with the group instead of immediately jumping to Google or an LLM. Talking through the logic together made the process feel more collaborative and helped me understand the reasoning behind our choices.
 - Having some previous experience with VCF parsing also helped me recognize parts of the file structure and contribute to the discussion more confidently.
+- We were succesfully able to navigate how to run Git both in the command line and in the browser, gaining confidence in the process.
 
 # Struggles
 - GitHub took the longest to figure out. Cloning, forking, switching branches, pushing changes, and creating pull requests were all new, so we spent a lot of time making sure we were doing each step correctly.
@@ -119,11 +120,14 @@ if __name__ == "__main__":
 
 # Personal Reflections
 ## Group Leader
-Group leader's reflection on the project
+## Yulia
+As the group leader, it was a valuable learning experience to set up the Github repo with branches, learn about pull requests, and navigate how to accept, reject, or merge edits. My other group members were also new to Git, so sharing the screen during our meeting helped them to visually learn what the approval process is like on my side, and that influenced how further pull requests were made. One thing I still find challenging is how to approve parts of someone's request, not all. In that way, we could only copy-paste the text we did want to keep, reject the pull request, and I would go in and add those edits to the original. It also got tricky when stacking multiple pull requests, I do wish there was a feature where we could see side-by-side more than one pull request compared to original. Other than that, our group learned a lot together about push and pull requests straight from the command line in VS code. It was also helpful for me to learn about how to write pseudocode. 
 
 ## Other member
 ## Aamna: 
 The biggest learning point for me was understanding the GitHub workflow and how forks, branches, commits, and pull requests all connect. It took some trial and error to make sure I was working in the correct branch and not overwriting anyone else’s work. I also found that reviewing multiple pull requests separately can be a little slow, especially when several people have made changes to the same file. I feel a lot more comfortable with the process now and understand much better how group coding projects are managed through GitHub.
 
+## Selin:
+
 # Generative AI Appendix
-As per the syllabus
+Claude was used for final general edits to syntax of the project01.py code. 
