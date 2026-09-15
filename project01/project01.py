@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python
 from pprint import pprint
 
@@ -6,7 +5,7 @@ from pprint import pprint
 # parse_line function
 def parse_line(line: str):
 
-# Skip VCF header / metadata lines
+	# Skip VCF header / metadata lines
 	if line.startswith("#"):
 		return []
 
@@ -19,8 +18,8 @@ def parse_line(line: str):
 
 	for item in info_items:
 		if item.startswith("AF_EXAC="): 
-			# Split INFO by semicolons to get key-value fields
-			raw_value = item.split("=")[1]
+			# Extract the AF_EXAC value
+			raw_value = item.split("=",1)[1] 
 			af_exac_value = float(raw_value)
 			break
 
@@ -36,13 +35,13 @@ def parse_line(line: str):
 
 	for item in info_items:
 		if item.startswith("CLNDN="):
-			raw_diseases = item.split("=")[1]
+			raw_diseases = item.split("=",1)[1]
 			disease_names = raw_diseases.split("|") 
 
 			for name in disease_names:
 				trimmed_name = name.strip()
 
-				if trimmed_name is None:
+				if not trimmed_name:
 					continue
 
 				# Exclude placeholder disease values
@@ -73,6 +72,5 @@ def read_file(filename: str):
 
 
 if __name__ == "__main__":
-    pprint(read_file("clinvar_20190923_short.vcf"))
-	
-    
+	pprint(read_file("clinvar_20190923_short.vcf"))
+
