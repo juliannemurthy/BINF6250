@@ -300,6 +300,8 @@ Starting this notebook with my group members from scratch with no given datasets
 
 ## Maggie
 Initially, I was feeling a little overwhelmed since we had no staring notebook to give us an outline of what this project should look like. It took some time of all three of us sitting down and working through the algorithm for me to feel a little less overwhelemed. We took a good amount of time in the beginning just sitting down with our notes and trying to comprehend the algorithm. When putting it together, Yulia found a dataset from chromosome 22 that we were able to implement and sue for running the program. We ended up not being able to completely run the dataset, because we ran into a problem with stretches of character `N` that we did not have time to fix. This would be something that we as a roup would like to work on handling for the next assignments. Overall we worked well together, and made sure that ecveryone was understanding the different aspects of this project.
+## Justin
+I found the open-ended nature of this project to be interesting and challenging. While it was exciting to not just be filling in a skeleton that was already built, it was more intimidating to get started on than previous projects. I didn't find the Viterbi algorithm itself to be particularly challenging, but finding data to adapt it to was difficult. Our team worked together well and made sure we understood everything conceptually as a group before beginning any implementation work.
 
 ## Other member
 Other members' reflections on the project
