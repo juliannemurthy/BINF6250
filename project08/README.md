@@ -54,18 +54,65 @@ A path probability is a product of many numbers less than 1. Multiplying many of
 We implemented Viterbi by attempting to use the entire chromosome 22 sequence, consisting of 50,818,468 bases. Using a UCSC derived file, cpgIslandExt.txt, we extracted the CpG regions of chr22 and used this to define our hidden states (CpG vs Genomic) and calculate its initial, emission, and transition probabilities to run the chr22 sequence with. 
 
 # Pseudocode
+`train_cpg_hmm` estimates the HMM parameters from a chromosome FASTA file and the UCSC CpG island annotation. The two states are `I` (CpG island) and `G` (genomic background).
+
+`_checksum` is a static method used to make sure all the probabilities (ie each transition probability) adds up to 1. It will raise a `ValueError` if they do not.
+
+`__init__` initializes the HMM object and sets parameters. There is input erro checking in here, and `ValueError` will be raised if there is an error.
+
+`_viterbi_recursion` uses the current state to find the previous state that maximizes the score, and stores them as pointers for traceback.
+
+`viterbi` sets up the probability matrix with initial probabilties and the first observation, and initializes a traceback matrix.
+
 The pseudocode for this project is as follows:
 
 ```
-CLASS HiddenMarkovModel
+FUNCTION train_cpg_hmm(fasta_path, cpg_path, chrom, pseudocount)
+    # load sequence
+    seq <- concatenate all non-header lines of fasta_path, uppercased
+    bases <- seq as an array of single characters
 
-def _checksum(name, prob)
+    # label each position
+    is_island <- array of False, one entry per base
+    for each line in cpg_path:
+        if line's chromosome = chrom:
+            is_island[start : end] <- True
+
+    valid_base <- positions where base is A, C, G, or T (excludes N)
+    mask["I"] <- valid_base AND is_island
+    mask["G"] <- valid_base AND NOT is_island
+
+    NORMALIZE(counts): return counts divided by sum of counts
+
+    # initial probabilities
+    for each state: state_counts[state] <- number of positions in mask[state]
+    init_probs <- NORMALIZE(state_counts)
+
+    # emission probabilities
+    for each state:
+        for each base in A, C, G, T:
+            base_counts[base] <- count of base within mask[state] + pseudocount
+        emit_probs[state] <- NORMALIZE(base_counts)
+
+    # transition probabilities
+    both_valid <- positions t where base[t] and base[t+1] are both valid
+    for each such t:
+        record (is_island[t], is_island[t+1]) as a transition
+    count G->G, G->I, I->G, I->I, adding pseudocount to each
+    trans_probs["I"] <- NORMALIZE({I: I->I, G: I->G})
+    trans_probs["G"] <- NORMALIZE({I: G->I, G: G->G})
+
+    return init_probs, trans_probs, emit_probs
+
+
+CLASS HiddenMarkovModel
+FUNCTION _checksum(name, prob)
     total <- sum of all values in prob
     if total is not close to 1.0 (tolerance 1e-9):
         raise error "name must sum to 1, got total"
 
 
-def __init__(init_probs, trans_probs, emit_probs)
+FUNCTION __init__(init_probs, trans_probs, emit_probs)
     store init_probs, trans_probs, emit_probs
     states <- list of keys of emit_probs
 
@@ -182,7 +229,13 @@ State path for input 'ATATCGCGCGCGAT': ('GGGGIIIIIIIIGG', -21.20203079978548)
 
 
 # Successes
-Description of the team's learning points
+**Class construction:** We successfully created the class `HiddenMarkovModel` and were able to implement different functions and attributes using `self`
+
+**Recursion:** We were able to implement recursion in our `_viterbi_recursion()` function. THis helped us find the position of the previous state with the maximum score, and store both scores as traceback pointers. 
+
+**Log-space computation:** We successfully implemented log-space calculations to avoid the problem of underflow in out calculations.
+
+**Communication and workflow:** As a team, we were able to use bith synchronous and asynchronous work sessions effectively. We used our synchrinous team meetings to understand the algorithm, work through pseudocode, and coordinate schedules and timing for peices of the project. We then were all ab le to effectively work asynchronously through GitHub and kept communcation through Teams messages
 
 # Struggles
 
@@ -245,8 +298,8 @@ KeyError: 'N'"
 ## Yulia
 Starting this notebook with my group members from scratch with no given datasets was initially challenging, as we had to chat through all the components that we would need. First we started with conceptually understanding the Viterbi lecture notes. Then, understanding what types of biological datasets could work well with the Viterbi model, and realizing that we had to make the Viterbi class very generalizable to handle any sorts of input data and N number of hidden states. We decided to implement a toy dataset, and a chromosome 22 dataset using the CpG and Genomic states. I primarily worked on the function to incorporate the chr22 sequence, define the states and the probabilities to pass it into the model. It took a while for me to understand how to calculate emission and transition probabilities, so I had to use outside resources for that. We were not able to run the model on the chr22 data since we did not handle the N stretches in the sequence itself, although we did in calculating probabilities, so that will be our next step. I look forward to implementing the next steps of the Hidden Markov Model we will learn about, and working with other biological datasets that fit the Viterbi model- so that we can further optimize our code to be generalizable and handle different types of cases. 
 
-## Other member
-Other members' reflections on the project
+## Maggie
+Initially, I was feeling a little overwhelmed since we had no staring notebook to give us an outline of what this project should look like. It took some time of all three of us sitting down and working through the algorithm for me to feel a little less overwhelemed. We took a good amount of time in the beginning just sitting down with our notes and trying to comprehend the algorithm. When putting it together, Yulia found a dataset from chromosome 22 that we were able to implement and sue for running the program. We ended up not being able to completely run the dataset, because we ran into a problem with stretches of character `N` that we did not have time to fix. This would be something that we as a roup would like to work on handling for the next assignments. Overall we worked well together, and made sure that ecveryone was understanding the different aspects of this project.
 
 ## Other member
 Other members' reflections on the project
