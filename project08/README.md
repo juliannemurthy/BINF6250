@@ -245,8 +245,8 @@ KeyError: 'N'"
 ## Yulia
 Starting this notebook with my group members from scratch with no given datasets was initially challenging, as we had to chat through all the components that we would need. First we started with conceptually understanding the Viterbi lecture notes. Then, understanding what types of biological datasets could work well with the Viterbi model, and realizing that we had to make the Viterbi class very generalizable to handle any sorts of input data and N number of hidden states. We decided to implement a toy dataset, and a chromosome 22 dataset using the CpG and Genomic states. I primarily worked on the function to incorporate the chr22 sequence, define the states and the probabilities to pass it into the model. It took a while for me to understand how to calculate emission and transition probabilities, so I had to use outside resources for that. We were not able to run the model on the chr22 data since we did not handle the N stretches in the sequence itself, although we did in calculating probabilities, so that will be our next step. I look forward to implementing the next steps of the Hidden Markov Model we will learn about, and working with other biological datasets that fit the Viterbi model- so that we can further optimize our code to be generalizable and handle different types of cases. 
 
-## Other member
-Other members' reflections on the project
+## Justin
+I found the open-ended nature of this project to be interesting and challenging. While it was exciting to not just be filling in a skeleton that was already built, it was more intimidating to get started on than previous projects. I didn't find the Viterbi algorithm itself to be particularly challenging, but finding data to adapt it to was difficult. Our team worked together well and made sure we understood everything conceptually as a group before beginning any implementation work.
 
 ## Other member
 Other members' reflections on the project
